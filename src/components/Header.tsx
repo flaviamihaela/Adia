@@ -83,7 +83,7 @@ export default function Header() {
             items-center
             gap-6 md:gap-8
             ml-auto
-            mr-10 md:mr-20 lg:mr-30   /* 👉 menu a bit further right */
+            mr-2 md:mr-4 lg:mr-6
         "
         >
         {navItems.map((item) => (
