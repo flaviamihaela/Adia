@@ -109,7 +109,7 @@ export default function Hero({ id }: { id?: string }) {
             />
           </div>
 
-          {/* Mid-left tile – aligned by explicit top */}
+          {/* Mid-left tile – bottom aligned to center tile */}
           <div
             ref={leftTileRef}
             className="
@@ -118,9 +118,8 @@ export default function Hero({ id }: { id?: string }) {
               hidden
               lg:block
               left-20
-              top-[10rem]
-              md:top-[16rem]
-              w-36 md:w-64
+              top-[25rem] md:top-[12rem]
+              w-32 md:w-56
               aspect-square
               border border-white/20
               bg-white/5
@@ -144,9 +143,9 @@ export default function Hero({ id }: { id?: string }) {
               absolute
               hidden
               lg:block
-              right-4 md:left-[calc(50%+24rem)]
+              right-4 md:left-[calc(50%+16rem)]
               top-24 md:top-24
-              w-36 md:w-48
+              w-32 md:w-40
               aspect-square
               border border-white/20
               bg-white/5
@@ -170,8 +169,8 @@ export default function Hero({ id }: { id?: string }) {
               absolute
               hidden
               lg:block
-              left-[calc(100%-1rem)] md:left-[calc(50%+24rem+12rem)]
-              top-[15rem] md:top-[18rem]
+              left-[calc(100%-1rem)] md:left-[calc(50%+16rem+10rem)]
+              top-[14rem] md:top-[16rem]
               w-44 md:w-56
               aspect-square
               border border-white/20

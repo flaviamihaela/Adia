@@ -1,13 +1,278 @@
+/* CSS Reset - Normalize styles across all browsers */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px; /* Explicit base font size to prevent Chrome scaling */
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-smooth: always;
+  line-height: 1.15;
+  -webkit-tap-highlight-color: transparent;
+  /* Prevent Chrome from scaling */
+  zoom: 1;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Remove default margins and padding */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+dl, dd, ol, ul,
+figure,
+hr {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles */
+ol, ul {
+  list-style: none;
+}
+
+/* Remove default button styles */
+button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+/* Remove default input styles */
+input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Remove default link styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove default image styles */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove default table styles */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove default form styles */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default quote styles */
+blockquote, q {
+  quotes: none;
+}
+
+blockquote::before, blockquote::after,
+q::before, q::after {
+  content: '';
+  content: none;
+}
+
+/* Remove default details styles */
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+  cursor: pointer;
+}
+
+/* Ensure consistent focus styles */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Ensure consistent appearance */
+[hidden] {
+  display: none;
+}
+
+/* Normalize form elements */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Normalize scrollbar for consistency */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Browser compatibility fixes */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-smooth: always;
+}
+
+/* Custom styles after reset */
+html {
+  font-size: 16px !important; /* Force 16px base to prevent Chrome scaling */
+}
+
 html, body {
   background: #050505;
   color: #EDEAE5;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-size: 16px; /* Explicit font size */
 }
 
-* { box-sizing: border-box; }
+/* Chrome-specific scaling fixes */
+@supports (-webkit-appearance: none) {
+  html {
+    font-size: 16px !important;
+    zoom: 1 !important;
+    -webkit-text-size-adjust: 100% !important;
+  }
+  
+  body {
+    font-size: 16px !important;
+    zoom: 1 !important;
+  }
+  
+  /* Prevent Chrome from auto-scaling */
+  * {
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
+/* Edge-specific fixes */
+@supports (-ms-ime-align: auto) {
+  html {
+    font-size: 16px;
+    -ms-text-size-adjust: 100%;
+  }
+}
+
+/* Ensure consistent rem calculations across browsers */
+@media screen {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Prevent Chrome zoom/scale issues */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  html {
+    font-size: 16px !important;
+    zoom: 1 !important;
+  }
+  
+  body {
+    zoom: 1 !important;
+  }
+  
+  /* Chrome-specific: Make Hero ADIA title smaller */
+  section[class*="min-h-screen"] h1 {
+    font-size: 7.5rem !important;
+  }
+  
+  @media (min-width: 768px) {
+    section[class*="min-h-screen"] h1 {
+      font-size: 15rem !important;
+    }
+  }
+  
+  /* Chrome-specific: Make Hero kicker text bigger */
+  section[class*="min-h-screen"] p[class*="tracking"] {
+    font-size: 0.7rem !important;
+  }
+  
+  @media (min-width: 768px) {
+    section[class*="min-h-screen"] p[class*="tracking"] {
+      font-size: 0.75rem !important;
+    }
+  }
+  
+  /* Chrome-specific: Make Hero center tile smaller */
+  section[class*="min-h-screen"] div[class*="hero-tile"][class*="left-1/2"] {
+    width: 16rem !important;
+  }
+  
+  @media (min-width: 768px) {
+    section[class*="min-h-screen"] div[class*="hero-tile"][class*="left-1/2"] {
+      width: 26rem !important;
+    }
+  }
+  
+  /* Chrome-specific: Make Hero top-left text smaller */
+  section[class*="min-h-screen"] div[class*="absolute"][class*="top-24"] p {
+    font-size: 0.8rem !important;
+  }
+  
+  @media (min-width: 768px) {
+    section[class*="min-h-screen"] div[class*="absolute"][class*="top-24"] p {
+      font-size: 0.875rem !important;
+    }
+  }
+}
 
 .noise {
   pointer-events: none;
@@ -24,4 +289,71 @@ html, body {
 /* smooth scroll container */
 [data-lenis-root] {
   height: auto;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Backdrop filter vendor prefixes for Chrome and Edge */
+.backdrop-blur-sm,
+.backdrop-blur-md {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-md {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+/* Ensure consistent width calculations */
+.max-w-7xl,
+.max-w-6xl,
+.max-w-4xl,
+.max-w-3xl {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Fix for Chrome/Edge width differences */
+@media (min-width: 1024px) {
+  body {
+    min-width: 100vw;
+  }
+  
+  [data-lenis-root] {
+    min-width: 100vw;
+  }
+}
+
+/* Ensure consistent calc() rendering */
+[class*="calc("] {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Fix for Chrome/Edge viewport unit differences */
+@supports (-webkit-appearance: none) {
+  /* Chrome/Edge specific fixes */
+  html {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  body {
+    width: 100%;
+    position: relative;
+  }
+}
+
+/* Ensure consistent full-width rendering */
+main {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+section {
+  width: 100%;
+  max-width: 100%;
 }

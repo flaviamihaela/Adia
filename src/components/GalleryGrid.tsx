@@ -85,6 +85,17 @@ export default function GalleryGrid() {
   const openLightboxWithReset = (index: number) => {
     setSelectedIndex(index);
     setLightboxLoaded(false);
+    // Preload the image to ensure it's ready for lightbox
+    const img = new Image();
+    img.src = items[index].src;
+    img.onload = () => {
+      // Image is ready, but let the actual img element handle the load event
+      setTimeout(() => {
+        if (selectedIndex === index) {
+          setLightboxLoaded(true);
+        }
+      }, 100);
+    };
   };
 
   // Preload images on hover
@@ -220,9 +231,15 @@ export default function GalleryGrid() {
               )}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
+                key={`lightbox-${selectedIndex}`}
                 src={items[selectedIndex].src}
                 alt={`Gallery image ${selectedIndex + 1}`}
                 onLoad={handleLightboxImageLoad}
+                onError={() => {
+                  setLightboxLoaded(true);
+                }}
+                loading="eager"
+                decoding="async"
                 className={`max-h-[90vh] w-auto mx-auto object-contain transition-opacity duration-300 ${
                   lightboxLoaded ? "opacity-100" : "opacity-0"
                 }`}
