@@ -81,7 +81,12 @@ export default function Hero({ id }: { id?: string }) {
         <div className="max-w-3xl">
           {/* Kicker */}
           <p ref={kickerRef} className="tracking-[0.25em] uppercase text-mist/70 mb-4 leading-none text-center">
-            Asociatia de Dezvoltare Intelectuala si Arta
+            <span className="block sm:inline">
+              Asociatia de Dezvoltare
+            </span>
+            <span className="block sm:inline">
+              Intelectuala si Arta
+            </span>
           </p>
 
           {/* Center tile – unchanged */}

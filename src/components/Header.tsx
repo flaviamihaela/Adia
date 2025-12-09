@@ -81,7 +81,7 @@ export default function Header() {
         className="
             flex
             items-center
-            gap-6 md:gap-8
+            gap-3 md:gap-8
             ml-auto
             mr-2 md:mr-4 lg:mr-6
         "
