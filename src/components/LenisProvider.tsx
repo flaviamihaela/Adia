@@ -16,7 +16,7 @@ export default function LenisProvider({ children }: { children: ReactNode }) {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
     lenisRef.current = lenis;
-    (window as any).lenis = lenis;
+    (window as Window & { lenis?: Lenis }).lenis = lenis;
 
     function raf(time: number) {
       lenis.raf(time);
@@ -42,7 +42,7 @@ export default function LenisProvider({ children }: { children: ReactNode }) {
     return () => {
       ScrollTrigger.removeEventListener("refresh", () => lenis.resize());
       lenis.destroy();
-      delete (window as any).lenis;
+      delete (window as Window & { lenis?: Lenis }).lenis;
     };
   }, []);
 

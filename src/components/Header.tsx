@@ -25,7 +25,7 @@ export default function Header() {
     const element = document.getElementById(id);
     if (element) {
       // Use Lenis if available, otherwise fallback to native scroll
-      const lenis = (window as any).lenis;
+      const lenis = (window as Window & { lenis?: { scrollTo: (element: HTMLElement, options: { offset: number; duration: number }) => void } }).lenis;
       if (lenis) {
         lenis.scrollTo(element, { offset: 0, duration: 1.2 });
       } else {

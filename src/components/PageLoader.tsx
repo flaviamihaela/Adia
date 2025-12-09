@@ -26,7 +26,7 @@ export default function PageLoader() {
 
     // Preload all images
     const loadImage = (src: string): Promise<void> => {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         const img = new Image();
         img.onload = () => resolve();
         img.onerror = () => resolve(); // Resolve even on error to not block loading

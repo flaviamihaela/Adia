@@ -7,7 +7,7 @@ export default function Reveal({ children, delay = 0 }: { children: ReactNode; d
   const el = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const { gsap, ScrollTrigger } = ensureGsap();
+    const { gsap } = ensureGsap();
     const element = el.current!;
     gsap.set(element, { opacity: 0, y: 24 });
 

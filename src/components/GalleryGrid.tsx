@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import Reveal from "./Reveal";
-import { ensureGsap } from "@/lib/gsap";
 
 const items = [
   { src: "/images/ev1.jpg" },
@@ -20,7 +19,6 @@ export default function GalleryGrid() {
   const [preloadedImages, setPreloadedImages] = useState<Set<number>>(new Set());
   const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
   const containerRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const { gsap } = ensureGsap();
 
   useEffect(() => {
     if (selectedIndex !== null) {
@@ -36,7 +34,7 @@ export default function GalleryGrid() {
   }, [selectedIndex]);
 
   const openLightbox = (index: number) => {
-    setSelectedIndex(index);
+    openLightboxWithReset(index);
   };
 
   const closeLightbox = () => {
@@ -45,13 +43,17 @@ export default function GalleryGrid() {
 
   const goToNext = () => {
     if (selectedIndex !== null) {
-      setSelectedIndex((selectedIndex + 1) % items.length);
+      const nextIndex = (selectedIndex + 1) % items.length;
+      setSelectedIndex(nextIndex);
+      setLightboxLoaded(false);
     }
   };
 
   const goToPrevious = () => {
     if (selectedIndex !== null) {
-      setSelectedIndex((selectedIndex - 1 + items.length) % items.length);
+      const prevIndex = (selectedIndex - 1 + items.length) % items.length;
+      setSelectedIndex(prevIndex);
+      setLightboxLoaded(false);
     }
   };
 
@@ -62,11 +64,9 @@ export default function GalleryGrid() {
       if (e.key === "Escape") {
         closeLightbox();
       } else if (e.key === "ArrowRight") {
-        setSelectedIndex((selectedIndex + 1) % items.length);
-        setLightboxLoaded(false);
+        goToNext();
       } else if (e.key === "ArrowLeft") {
-        setSelectedIndex((selectedIndex - 1 + items.length) % items.length);
-        setLightboxLoaded(false);
+        goToPrevious();
       }
     };
 
@@ -82,11 +82,10 @@ export default function GalleryGrid() {
     setLightboxLoaded(true);
   };
 
-  useEffect(() => {
-    if (selectedIndex !== null) {
-      setLightboxLoaded(false);
-    }
-  }, [selectedIndex]);
+  const openLightboxWithReset = (index: number) => {
+    setSelectedIndex(index);
+    setLightboxLoaded(false);
+  };
 
   // Preload images on hover
   const handleMouseEnter = (index: number) => {
