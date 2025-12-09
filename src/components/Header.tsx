@@ -35,9 +35,9 @@ export default function Header() {
   };
 
   const navItems = [
-    { label: "Acasa", id: "hero" },
-    { label: "Proiecte", id: "proiecte" },
-    { label: "Despre Noi", id: "despre-noi" },
+    { label: "Home", id: "hero" },
+    { label: "Projects", id: "proiecte" },
+    { label: "About", id: "despre-noi" },
     { label: "Events", id: "evenimente" },
   ];
 
