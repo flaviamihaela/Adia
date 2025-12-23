@@ -18,9 +18,7 @@ export default function PageLoader() {
       "/images/13.jpg", // Bottom-right tile
       "/images/adia-removebg-preview.png", // Logo
       "/images/4.jpg", // SectionGP background
-      "/images/1.jpg", // Gallery images
       "/images/2.jpg",
-      "/images/3.jpg",
       "/images/4.jpg",
     ];
 

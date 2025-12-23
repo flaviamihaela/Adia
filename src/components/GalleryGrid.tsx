@@ -4,12 +4,40 @@ import { useState, useEffect, useRef } from "react";
 import Reveal from "./Reveal";
 
 const items = [
-  { src: "/images/ev1.jpg" },
-  { src: "/images/ev2.jpg" },
-  { src: "/images/ev3.jpg" },
-  { src: "/images/ev4.jpg" },
-  { src: "/images/ev5.jpg" },
-  { src: "/images/ev6.jpg" },
+  { src: "/images/mnac.jpg" },
+  { src: "/images/feminitate.jpeg" },
+  { src: "/images/arta.jpeg" },
+  { src: "/images/teatru_carte.jpeg" },
+  { src: "/images/tablou_meli.jpeg" },
+  { src: "/images/mareabritanie.jpeg" },
+  { src: "/images/coroanabrad.jpeg" },
+  { src: "/images/stelute.jpeg" },
+  { src: "/images/iubireromantica.jpeg" },
+  { src: "/images/dana.jpeg" },
+
+  { src: "/images/rochiealbastra.jpeg" },
+  { src: "/images/panoupoze.jpeg"},
+  { src: "/images/tort.jpeg" },
+  { src: "/images/frunze.jpeg" },
+  { src: "/images/frunzeumbrela.jpeg" },
+
+  { src: "/images/grup.jpeg" },
+  { src: "/images/decernari.jpeg" },
+  { src: "/images/andreea.jpeg" },
+  { src: "/images/ingeri.jpeg" },
+  { src: "/images/noulsediu.jpeg" },
+
+  { src: "/images/colaj.jpeg" },
+  { src: "/images/festivalfilmfrancez.jpeg" },
+  { src: "/images/luminacalda.jpeg" },
+  { src: "/images/scaune.jpeg" },
+  { src: "/images/stillstand.jpeg" },
+
+  { src: "/images/fridakahlo1.jpeg" },
+  { src: "/images/fridakahlo2.jpeg" },
+  { src: "/images/dovleac.jpg" },
+  { src: "/images/halloween.jpg" },
+  { src: "/images/floareintreflori.jpg" },
 ];
 
 export default function GalleryGrid() {
@@ -162,8 +190,23 @@ export default function GalleryGrid() {
 
   return (
     <>
+      {/* Banner Section */}
+      <section className="px-6 md:px-12 pt-12 pb-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="w-full aspect-[16/6] rounded-2xl overflow-hidden bg-mist/5">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/fondatoarele.jpeg"
+              alt="Banner"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Grid Section */}
       <section className="px-6 md:px-12 pb-28">
-        <div className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-5 gap-6">
           {items.map((it, i) => (
             <Reveal key={i} delay={i * 0.04}>
               <article
